@@ -1,0 +1,21 @@
+/* Main Content Styling */
+.stats{
+    display: flex;
+    padding: 20px;
+    gap: 40px;
+    justify-content: space-around;
+}
+
+.admin-main h1 {
+    font-size: 2rem;
+    color: #333333; /* Text color */
+}
+
+.admin-main p {
+    font-size: 1.2rem;
+    color: #555555;
+    margin-top: 10px;
+}
+.dash_ico{
+width: 30%;
+}
