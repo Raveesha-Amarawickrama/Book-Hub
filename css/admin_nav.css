@@ -1,0 +1,45 @@
+/* General Admin Layout */
+
+.admin-sidebar ul{
+    display: flex;
+    justify-content: space-around;
+
+   
+}
+/* Active Tab Styling */
+.admin-sidebar ul li a.active {
+    background-color: #003e9a; /* Secondary color */
+    font-weight: bold;
+    color: #ffffff; /* Keep text white */
+}
+/* Sidebar Styling */
+.admin-sidebar {
+    background-color: #3498db; /* Primary color */
+    color: #ffffff; /* White text */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-sidebar ul li {
+    margin: 15px;
+}
+
+.admin-sidebar ul li a {
+    display: block;
+    line-height: 100%;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.admin-sidebar ul li a:hover {
+    background-color: #003e9a; /* Secondary color for hover */
+}
