@@ -74,3 +74,86 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     exit;
     }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/profile.css">
+    <script src="../js/profile.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="profile-title">User Profile</h1>
+
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <p class="success-message"><?= $_SESSION['success_message']; ?></p>
+            <?php unset($_SESSION['success_message']); ?>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <p class="error-message"><?= $_SESSION['error_message']; ?></p>
+            <?php unset($_SESSION['error_message']); ?>
+        <?php endif; ?>
+
+        <!-- Update Profile Image -->
+        <form action="profile.php" method="POST" enctype="multipart/form-data" class="form-section">
+            <div class="form-group">
+                <label for="profileImage">Profile Image:</label>
+                <?php if (!empty($user['profileImage'])): ?>
+                    <img src="../uploads/<?= $user['profileImage']; ?>?v=<?= time(); ?>" alt="Profile Image"
+                        class="profile-img">
+                <?php else: ?>
+                    <p>No profile image uploaded.</p>
+                <?php endif; ?>
+                <input type="file" name="profileImage" id="profileImage">
+                <button type="submit" name="update_image" class="btn">Update Profile Image</button>
+            </div>
+        </form>
+
+        <!-- Update Username -->
+        <form action="profile.php" method="POST" class="form-section">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" value="<?= htmlspecialchars($user['Username']); ?>"
+                    required>
+                <button type="submit" name="update_username" class="btn">Update Username</button>
+            </div>
+        </form>
+
+        <!-- Update Email -->
+        <form action="profile.php" method="POST" class="form-section">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['Email']); ?>" required>
+                <button type="submit" name="update_email" class="btn">Update Email</button>
+            </div>
+        </form>
+
+        <!-- Update Password -->
+        <form action="profile.php" method="POST" class="form-section">
+            <div class="form-group">
+                <label for="password">New Password (Leave blank if you don't want to change):</label>
+                <input type="password" name="password" id="password">
+                <button type="submit" name="update_password" class="btn">Update Password</button>
+            </div>
+        </form>
+
+        <!-- Display Membership Details -->
+        <?php if ($user['MembershipType'] != 'admin' && $user['MembershipType'] == 'Paid'): ?>
+            <div class="membership-details">
+                <h2>Membership Details</h2>
+                <p><strong>Membership Type:</strong> <?= htmlspecialchars($user['MembershipType']); ?></p>
+                <p><strong>Membership Expiry Date:</strong> <?= htmlspecialchars($user['MembershipEndDate']); ?></p>
+            </div>
+        <?php endif; ?>
+    </div>
+</body>
+
+</html>
+
+<?php
+$conn->close();
+?>
