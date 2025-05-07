@@ -1,0 +1,17 @@
+{
+    "name": "kavindu_vendor/library_vendor",
+    "autoload": {
+        "psr-4": {
+            "KavinduVendor\\LibraryVendor\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kavindupbsr",
+            "email": "bkpabasara@gmail.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^16.2"
+    }
+}
